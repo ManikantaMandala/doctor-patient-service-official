@@ -18,7 +18,7 @@ import jakarta.validation.Valid;
 public class PatientController {
     private final PatientService patientService;
     
-   private static final Logger log = LoggerFactory.getLogger(PatientController.class);
+    private static final Logger log = LoggerFactory.getLogger(PatientController.class);
 
     public PatientController(PatientService patientService) {
         this.patientService = patientService;
@@ -43,6 +43,7 @@ public class PatientController {
             return new ResponseEntity<>(patientDTO, HttpStatus.OK);
         }
     }
+
     @GetMapping
     public ResponseEntity<List<PatientDto>> get() {
     	log.info("Receive request to get all Patient deatils");
@@ -52,8 +53,7 @@ public class PatientController {
     }
     
     @PutMapping("/id/{id}")
-    public ResponseEntity<PatientDto> update(@PathVariable Long id,@RequestBody PatientDto patientDto )
-    {
+    public ResponseEntity<PatientDto> update(@PathVariable Long id,@RequestBody PatientDto patientDto ) {
     	log.info("Received request to update Patient details with ID:{}",id);
         PatientDto updatedDto =  patientService.update(id,patientDto);
         log.info("update successfuly with ID: {}",id);

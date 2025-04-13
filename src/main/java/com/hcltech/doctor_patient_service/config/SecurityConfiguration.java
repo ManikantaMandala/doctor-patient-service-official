@@ -30,19 +30,29 @@ public class SecurityConfiguration {
 
     private static final Logger logger = LoggerFactory.getLogger(SecurityConfiguration.class);
 
-    private static final String[] SWAGGER_WHITE_LIST        = { "/swagger-ui.html",
+    private static final String[] SWAGGER_WHITE_LIST        = {
+            "/swagger-ui.html",
             "/swagger-ui/index.html",
             "/swagger-ui/**",
             "/swagger-resources/**",
             "/v3/api-docs/**" };
-    private static final String[] H2_CONSOLE_WHITE_LIST     = { "/h2-console/**" };
-    private static final String[] AUTHENTICATION_WHITE_LIST = { "api/v1/register", "api/v1/login", "/api/v1/auth/register", "/api/v1/auth/login", "/api/v1/auth/logout" };
+    private static final String[] H2_CONSOLE_WHITE_LIST     = {
+            "/h2-console/**"
+    };
+    private static final String[] AUTHENTICATION_WHITE_LIST = {
+            "api/v1/register",
+            "api/v1/login",
+            "/api/v1/auth/register",
+            "/api/v1/auth/login",
+            "/api/v1/auth/logout"
+    };
 
     private final JwtAuthRequestFilter jwtAuthRequestFilter;
     private final JpaUserDetailsService jpaUserDetailsService;
 
     @Autowired
-    public SecurityConfiguration(JwtAuthRequestFilter jwtAuthRequestFilter, JpaUserDetailsService jpaUserDetailsService) {
+    public SecurityConfiguration(JwtAuthRequestFilter jwtAuthRequestFilter,
+                                 JpaUserDetailsService jpaUserDetailsService) {
         this.jwtAuthRequestFilter = jwtAuthRequestFilter;
         this.jpaUserDetailsService = jpaUserDetailsService;
     }
@@ -53,9 +63,11 @@ public class SecurityConfiguration {
         logger.info("Configuring security filter chain...");
         http.csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
-                .headers(header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
+                .headers(header ->
+                        header.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
 
-        http.authorizeHttpRequests(requests -> requests.requestMatchers(SWAGGER_WHITE_LIST)
+        http.authorizeHttpRequests(requests ->
+                requests.requestMatchers(SWAGGER_WHITE_LIST)
                 .permitAll()
                 .requestMatchers(H2_CONSOLE_WHITE_LIST)
                 .permitAll()
@@ -64,7 +76,8 @@ public class SecurityConfiguration {
                 .anyRequest()
                 .authenticated());
         logger.info("Public endpoints configured: Swagger, H2 console, and authentication endpoints.");
-        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        http.sessionManagement(session ->
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         logger.info("Session management set to stateless.");
         http.authenticationProvider(authenticationProvider(jpaUserDetailsService));
         logger.info("Authentication provider configured.");

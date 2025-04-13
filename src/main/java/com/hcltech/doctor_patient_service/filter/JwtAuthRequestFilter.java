@@ -53,7 +53,7 @@ public class JwtAuthRequestFilter extends OncePerRequestFilter {
                     UserDetails userDetails = this.jpaUserDetailsService.loadUserByUsername(username);
 
                     if (jwtUtil.validateToken(jwt, userDetails)) {
-
+                        jwtLogger.info("jwt validate successfully");
                         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                                 userDetails, null, userDetails.getAuthorities());
                         authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
@@ -70,6 +70,7 @@ public class JwtAuthRequestFilter extends OncePerRequestFilter {
             }
         } else {
             jwtLogger.debug("Authorization header not found or does not start with Bearer.");
+            jwtLogger.trace("passing the Authorization object to next filter");
         }
         chain.doFilter(request, response);
     }

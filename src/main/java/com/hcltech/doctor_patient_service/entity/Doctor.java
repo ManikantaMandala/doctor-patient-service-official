@@ -19,7 +19,7 @@ public class Doctor {
     @Column(name = "specialist")
     @Enumerated(EnumType.STRING)
     private SpecialistType specialist;
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "doctor", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, orphanRemoval = true)
     private List<Patient> patients;
 
     public Doctor() {

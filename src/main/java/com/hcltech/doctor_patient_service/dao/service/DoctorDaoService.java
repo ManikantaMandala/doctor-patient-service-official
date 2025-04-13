@@ -29,7 +29,6 @@ public class DoctorDaoService {
         this.patientRepository = patientRepository;
     }
 
-
     public Doctor create(Doctor doctor) {
     	Doctor savedDoctor =  doctorRepository.save(doctor);
     	log.info("Doctor saved successfully");
@@ -51,35 +50,43 @@ public class DoctorDaoService {
     public boolean assignPatient(Long doctorId, Long patientId) {
         Patient patient = patientRepository.findById(patientId).orElseThrow(() ->  new PatientNotFoundException("Patient not found"));
         Doctor doctor = doctorRepository.findById(doctorId).orElseThrow(() -> new DoctorNotFoundException("Doctor not found"));
+
         if(doctor.getPatients()==null){
             doctor.setPatients(new ArrayList<>());
         }
+
         if(doctor.getPatients().size() >= 4){
         	log.warn("Doctor: {} has exceeded the maximum patient: {} limit of 4",doctorId,patientId);
             throw new DoctorPatientLimitExceededException("Doctor has exceeded the maximum patient limit of 4");
         }
-        doctor.getPatients().add(patient);
+
+//        doctor.getPatients().add(patient);
         patient.setDoctor(doctor);
+
         patientRepository.save(patient);
         log.info("Suceessfully assigned patient {} to doctor {}",patientId,doctorId);
+
         return true;
     }
 
     public void unassignPatient(Long doctorId, Long patientId) {
         Patient patient = patientRepository.findById(patientId).orElseThrow(() -> new PatientNotFoundException("Patient not found"));
         Doctor doctor = doctorRepository.findById(doctorId).orElseThrow(() -> new DoctorNotFoundException("Doctor not found"));
+
         if(doctor.getPatients()==null){
             doctor.setPatients(new ArrayList<>());
         }
+
         if(!doctor.getPatients().contains(patient)){
         	log.warn("patient {} is not assigned to this doctor{}",patientId,doctorId);
             throw new PatientNotAssignedException("patient is not assigned to this doctor");
         }
-        doctor.getPatients().remove(patient);
+
+//        doctor.getPatients().remove(patient);
         patient.setDoctor(null);
+
         patientRepository.save(patient);
         log.info("Suceessfully unassigned patient {} to doctor {}",patientId,doctorId);
-        
     }
 
     public void delete(long id) {
@@ -87,7 +94,6 @@ public class DoctorDaoService {
     	
         doctorRepository.deleteById( id);
         log.info("doctor with ID: {} deleted successfull",id);
-
     }
 
     public Optional<Object> createDoctor(Doctor doctor) {

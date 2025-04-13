@@ -120,10 +120,8 @@ public class DoctorController {
 	{
 
 		final Optional<DoctorDto> optionalDoctor= doctorService.update(doctorDto);
-		if(optionalDoctor.isEmpty())
-		{
+		if(optionalDoctor.isEmpty()) {
 			return ResponseEntity.internalServerError().build();
-
 		}
 		return ResponseEntity.ok(optionalDoctor.get());
 	}

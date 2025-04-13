@@ -19,7 +19,8 @@ public class OpenAPIConfig {
     private static final String SCHEME = "bearer";
     private static final String BEARER_FORMAT = "JWT";
 
-    @Bean    public OpenAPI openAPI() {
+    @Bean
+    public OpenAPI openAPI() {
         logger.info("Initializing OpenAPI configuration...");
         OpenAPI openAPI = new OpenAPI().components(components())
                 .addSecurityItem(securityRequirement());

@@ -18,8 +18,7 @@ public class AllergyDaoService {
 	        this.allergyRepository = allergyRepository;
 	    }
 
-	    public Optional<Allergy> findById(Long id)
-	    {
+	    public Optional<Allergy> findById(Long id) {
 	    	log.info("fetching Allergy details With ID: {}",id);
 	    	
 	      return     allergyRepository.findById(id);
