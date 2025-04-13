@@ -2,7 +2,6 @@ package com.hcltech.doctor_patient_service.entity;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "allergy" )
 public class Allergy {

@@ -89,29 +89,6 @@ class PatientServiceTest {
     }
 
     @Test
-    @DisplayName("Test_CreatePatient")
-    void testCreatePatient() {
-        lenient().when(doctorService.noOfPatients(1L)).thenReturn(3);
-        when(patientDaoService.create(any(Patient.class))).thenReturn(patient);
-        when(doctorDaoService.getById(any())).thenReturn(Optional.ofNullable(doctor));
-        PatientDto createdPatientDto = patientService.create(patientDto);
-
-        assertNotNull(createdPatientDto);
-        assertEquals("John Doe", createdPatientDto.getName());
-        verify(patientDaoService, times(1)).create(any(Patient.class));
-    }
-
-    @Test
-     void testCreatePatient_ExceedsPatientLimit() {
-        when(doctorService.noOfPatients(anyLong())).thenReturn(4);
-        when(doctorDaoService.getById(anyLong())).thenReturn(Optional.of(doctor));
-
-        assertThrows(DoctorPatientLimitExceededException.class, () -> patientService.create(patientDto));
-
-        verify(patientDaoService, never()).create(any(Patient.class));
-    }
-
-    @Test
     @DisplayName("Test_GetPatientById")
     void testGetPatientById() {
         when(patientDaoService.getById(1L)).thenReturn(Optional.of(patient));

@@ -65,17 +65,6 @@ public class DoctorController {
 		return ResponseEntity.ok(doctorDtos);
 	}
 
-//	@GetMapping
-//	public ResponseEntity<Void> allocateDoctor(@PathVariable long id) {
-//		patientService.allocateDoctor(id);
-//	}
-
-	@GetMapping("/{id}/patients-size")
-	public int size(@PathVariable("id") Long id) {
-		log.info("Receive request to fetch number of Patients");
-		return doctorService.noOfPatients(id);
-	}
-
 	@GetMapping("/{id}/patients")
 	public ResponseEntity<List<PatientDto>> getByDoctorId(@PathVariable("id") Long id) {
 		log.info("Received request ot fetching all patients who  have doctor ID: {}", id);

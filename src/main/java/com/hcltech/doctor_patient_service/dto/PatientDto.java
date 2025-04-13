@@ -30,7 +30,6 @@ public class PatientDto {
         this.age = age;
     }
 
-
     public PatientDto() {
         // Default constructor for deserialization
     }
@@ -113,6 +112,5 @@ public class PatientDto {
     public void setAdvancedHealthcareDto(AdvancedHealthcareDto advancedHealthcareDto) {
         this.advancedHealthcareDto = advancedHealthcareDto;
     }
-
 
 }

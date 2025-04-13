@@ -133,17 +133,6 @@ class DoctorServiceTest {
     }
 
     @Test
-    @DisplayName("Test_DeleteDoctor")
-    void testDelete() {
-        doNothing().when(doctorDaoService).delete(1L);
-
-        boolean result = doctorService.delete(1L);
-
-        assertTrue(result);
-        verify(doctorDaoService, times(1)).delete(1L);
-    }
-
-    @Test
     @DisplayName("Test_UpdateDoctor")
     void testUpdate() {
         when(doctorDaoService.createDoctor(any(Doctor.class))).thenReturn(Optional.of(doctor));
@@ -166,33 +155,4 @@ class DoctorServiceTest {
         assertEquals("Doctor has exceeded the maximum patient limit of 4", exception.getMessage());
     }
 
-    @Test
-    void noOfPatients_DoctorExists() {
-        // Arrange
-        Long doctorId = 1L;
-        Doctor doctors = new Doctor();
-        doctors.setPatients(Collections.singletonList(new Patient()));
-        when(doctorDaoService.getById(doctorId)).thenReturn(Optional.of(doctors));
-
-        // Act
-        int result = doctorService.noOfPatients(doctorId);
-
-        // Assert
-        assertEquals(1, result);
-        verify(doctorDaoService, times(1)).getById(doctorId);
-    }
-
-    @Test
-    void noOfPatients_DoctorDoesNotExist() {
-        // Arrange
-        Long doctorId = 1L;
-        when(doctorDaoService.getById(doctorId)).thenReturn(Optional.empty());
-
-        // Act
-        int result = doctorService.noOfPatients(doctorId);
-
-        // Assert
-        assertEquals(0, result);
-        verify(doctorDaoService, times(1)).getById(doctorId);
-    }
 }

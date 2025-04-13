@@ -3,7 +3,6 @@ package com.hcltech.doctor_patient_service.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import com.hcltech.doctor_patient_service.exception.DoctorNotFoundException;
 import org.slf4j.Logger;
@@ -59,7 +58,7 @@ public class PatientService {
             if (doctor.isEmpty()) {
                 throw new DoctorNotFoundException("Doctor not found");
             }
-            if (doctorService.noOfPatients(patient.getDoctor().getId()) >= 4) {
+            if (doctor.get().getPatients().size() > 3) {
                 log.warn("Doctor already have 4 patients");
                 throw new DoctorPatientLimitExceededException("Doctor already have 4 patients");
             }
@@ -201,7 +200,7 @@ public class PatientService {
 
     public List<PatientDto> get() {
         log.info("getting patient deatils ");
-        return patientDaoService.get().stream().map(this::toDTO).collect(Collectors.toList());
+        return patientDaoService.get().stream().map(this::toDTO).toList();
     }
 
     public Boolean delete(long id) {

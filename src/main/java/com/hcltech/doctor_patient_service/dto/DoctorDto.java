@@ -18,8 +18,6 @@ public class DoctorDto {
 
     private List<Long> patientIds;
 
-
-
     public DoctorDto() {
 
     }

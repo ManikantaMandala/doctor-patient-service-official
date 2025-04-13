@@ -87,15 +87,6 @@ public class DoctorService {
         return doctorDto;
     }
 
-    public int noOfPatients(Long doctorId) {
-        Optional<Doctor> byId = doctorDaoService.getById(doctorId);
-        int size = 0;
-        if (byId.isPresent()) {
-            size = byId.get().getPatients().size();
-        }
-        return size;
-    }
-
     public boolean assignPatient(Long doctorId, Long patientId) {
         return doctorDaoService.assignPatient(doctorId, patientId);
     }
@@ -105,8 +96,18 @@ public class DoctorService {
     }
 
     public Boolean delete(long id) {
+        Optional<Doctor> doctorOptional = doctorDaoService.getById(id);
+        if(doctorOptional.isEmpty()) {
+            throw new DoctorNotFoundException("doctor not found");
+        }
 
-        doctorDaoService.delete(id);
+        List<Patient> patients = doctorOptional.get().getPatients();
+
+        patients.forEach(patient -> {
+            patient.setDoctor(null);
+        });
+
+        doctorDaoService.getById(id);
         return true;
     }
 

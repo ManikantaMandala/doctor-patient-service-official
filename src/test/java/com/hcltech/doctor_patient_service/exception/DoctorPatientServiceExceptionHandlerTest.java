@@ -24,7 +24,7 @@ class DoctorPatientServiceExceptionHandlerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        when(request.getRequestURI()).thenReturn("/test-endpoint");  // ✅ Mock the request URI
+        when(request.getRequestURI()).thenReturn("/test-endpoint");
     }
 
     @Test

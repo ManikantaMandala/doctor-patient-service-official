@@ -21,7 +21,7 @@ public class AdvancedHealthcare {
     @OneToMany(mappedBy = "advancedHealthcare", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Allergy> allergies;
     @OneToMany(mappedBy = "advancedHealthcare", cascade = CascadeType.ALL, orphanRemoval = true)
-   private List<Medication> medications;
+    private List<Medication> medications;
     @OneToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;

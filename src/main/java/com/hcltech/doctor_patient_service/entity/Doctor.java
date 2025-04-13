@@ -19,11 +19,12 @@ public class Doctor {
     @Column(name = "specialist")
     @Enumerated(EnumType.STRING)
     private SpecialistType specialist;
-    @OneToMany(mappedBy = "doctor", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, orphanRemoval = true)
+    @OneToMany(mappedBy = "doctor", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private List<Patient> patients;
 
     public Doctor() {
     }
+
     public Doctor(Long id, String name, String qualification, SpecialistType specialist, List<Patient> patients) {
         this.id = id;
         this.name = name;
@@ -31,8 +32,6 @@ public class Doctor {
         this.specialist = specialist;
         this.patients = patients;
     }
-
-
 
     public Long getId() {
         return id;

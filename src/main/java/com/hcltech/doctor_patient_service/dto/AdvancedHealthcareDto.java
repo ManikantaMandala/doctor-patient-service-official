@@ -1,6 +1,5 @@
 package com.hcltech.doctor_patient_service.dto;
 
-
 import java.util.List;
 
 public class AdvancedHealthcareDto {

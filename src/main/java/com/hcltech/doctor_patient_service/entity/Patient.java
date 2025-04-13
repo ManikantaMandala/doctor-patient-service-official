@@ -32,10 +32,7 @@ public class Patient {
         this.gender = gender;
         this.phone = phone;
         this.age = age;
-
     }
-
-
 
     public Patient() {
     }
