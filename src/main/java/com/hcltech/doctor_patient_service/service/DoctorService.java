@@ -52,7 +52,6 @@ public class DoctorService {
     }
 
     public DoctorDto getById(Long id) {
-
         return doctorDaoService.getById(id).map(this::toDto).orElseThrow(() -> new DoctorNotFoundException("Doctor not found for Id:" + id));
     }
 

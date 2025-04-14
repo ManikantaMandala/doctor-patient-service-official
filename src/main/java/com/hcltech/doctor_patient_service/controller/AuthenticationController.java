@@ -41,12 +41,12 @@ public class AuthenticationController {
 
     }
 
-    @PostMapping("/logout")
-    public ResponseEntity<AuthenticationResponseDto> logout(
-            @RequestBody AuthenticationRequestDto authenticationRequestDto)  {
-        logger.info("Received logout request.");
+    // @PostMapping("/logout")
+    // public ResponseEntity<AuthenticationResponseDto> logout(
+    //         @RequestBody AuthenticationRequestDto authenticationRequestDto)  {
+    //     logger.info("Received logout request.");
 
-        return null;
-    }
+    //     return null;
+    // }
 }
 

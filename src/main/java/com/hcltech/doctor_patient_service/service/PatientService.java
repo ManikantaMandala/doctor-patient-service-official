@@ -33,17 +33,15 @@ import jakarta.validation.Valid;
 public class PatientService {
     private final PatientDaoService patientDaoService;
     private final DoctorDaoService doctorDaoService;
-    private final DoctorService doctorService;
     private final BasicHealthcareDaoService basicHealthcareDaoService;
     private final AdvancedHealthcareDaoService advancedHealthcareDaoService;
 
 
     private static final Logger log = LoggerFactory.getLogger(PatientService.class);
 
-    public PatientService(PatientDaoService patientDaoService, DoctorDaoService doctorDaoService, DoctorService doctorService, BasicHealthcareDaoService basicHealthcareDaoService, AdvancedHealthcareDaoService advancedHealthcareDaoService) {
+    public PatientService(PatientDaoService patientDaoService, DoctorDaoService doctorDaoService, BasicHealthcareDaoService basicHealthcareDaoService, AdvancedHealthcareDaoService advancedHealthcareDaoService) {
         this.patientDaoService = patientDaoService;
         this.doctorDaoService = doctorDaoService;
-        this.doctorService = doctorService;
         this.basicHealthcareDaoService = basicHealthcareDaoService;
         this.advancedHealthcareDaoService = advancedHealthcareDaoService;
 

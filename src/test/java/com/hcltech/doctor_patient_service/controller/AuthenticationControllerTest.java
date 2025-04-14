@@ -72,17 +72,17 @@ class AuthenticationControllerTest {
         verify(authenticationService, times(1)).login(requestDto);
     }
 
-    @Test
-    void logout() {
-        // Arrange
-        AuthenticationRequestDto requestDto = new AuthenticationRequestDto();
-        requestDto.setUsername("user");
-        requestDto.setPassword("password");
+    // @Test
+    // void logout() {
+    //     // Arrange
+    //     AuthenticationRequestDto requestDto = new AuthenticationRequestDto();
+    //     requestDto.setUsername("user");
+    //     requestDto.setPassword("password");
 
-        // Act
-        ResponseEntity<AuthenticationResponseDto> response = authenticationController.logout(requestDto);
+    //     // Act
+    //     ResponseEntity<AuthenticationResponseDto> response = authenticationController.logout(requestDto);
 
-        // Assert
-        assertNull(response);
-    }
+    //     // Assert
+    //     assertNull(response);
+    // }
 }

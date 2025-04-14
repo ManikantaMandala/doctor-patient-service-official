@@ -12,7 +12,7 @@ The **Doctor Patient REST Service** is a Spring boot based application designed 
 * **Swagger-UI(OpenAPI-UI)** for API documentation and testing
 * **JUnit and Mockito** for testing
 * **SonarQube and JaCoCO** for code quality and test coverage
-* **Logging** SLF4J, LogBack (for structured logging and debugging)
+* SLF4J, LogBack for **Logging**  (for structured logging and debugging)
 
 ### Application Setup
 
