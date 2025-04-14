@@ -24,7 +24,7 @@ import com.hcltech.doctor_patient_service.service.PatientService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/doctor-patient-service/v1/doctors")
+@RequestMapping("/api/v1/doctors")
 public class DoctorController {
 	private final DoctorService doctorService;
 	private final PatientService patientService;

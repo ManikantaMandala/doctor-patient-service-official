@@ -14,7 +14,7 @@ import com.hcltech.doctor_patient_service.service.PatientService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/doctor-patient-service/v1/patients")
+@RequestMapping("/api/v1/patients")
 public class PatientController {
     private final PatientService patientService;
     
@@ -52,7 +52,7 @@ public class PatientController {
         return new ResponseEntity<>(patientDTO, HttpStatus.OK);
     }
     
-    @PutMapping("/id/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<PatientDto> update(@PathVariable Long id,@RequestBody PatientDto patientDto ) {
     	log.info("Received request to update Patient details with ID:{}",id);
         PatientDto updatedDto =  patientService.update(id,patientDto);

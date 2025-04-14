@@ -40,8 +40,6 @@ public class SecurityConfiguration {
             "/h2-console/**"
     };
     private static final String[] AUTHENTICATION_WHITE_LIST = {
-            "api/v1/register",
-            "api/v1/login",
             "/api/v1/auth/register",
             "/api/v1/auth/login",
             "/api/v1/auth/logout"
