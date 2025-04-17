@@ -60,7 +60,6 @@ public class DoctorDaoService {
             throw new DoctorPatientLimitExceededException("Doctor has exceeded the maximum patient limit of 4");
         }
 
-//        doctor.getPatients().add(patient);
         patient.setDoctor(doctor);
 
         patientRepository.save(patient);
@@ -82,7 +81,6 @@ public class DoctorDaoService {
             throw new PatientNotAssignedException("patient is not assigned to this doctor");
         }
 
-//        doctor.getPatients().remove(patient);
         patient.setDoctor(null);
 
         patientRepository.save(patient);

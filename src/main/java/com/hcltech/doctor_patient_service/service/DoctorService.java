@@ -104,9 +104,11 @@ public class DoctorService {
 
         patients.forEach(patient -> {
             patient.setDoctor(null);
+            patientDaoService.update(patient);
         });
 
-        doctorDaoService.getById(id);
+        doctorDaoService.delete(id);
+
         return true;
     }
 

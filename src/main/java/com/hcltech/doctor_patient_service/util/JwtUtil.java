@@ -22,7 +22,7 @@ import java.util.function.Function;
 @Service
 public class JwtUtil {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtil.class);
-//    @Value("${jwt.secret}")
+   @Value("${jwt.secret}")
     public static String SECRET_KEY = "lK3Px+gkZ5fZV7tvNLV6GdfJQvJ4lw4EjPe4C8x+lK4=";
 
     public String extractUsernameFromToken(String token) {

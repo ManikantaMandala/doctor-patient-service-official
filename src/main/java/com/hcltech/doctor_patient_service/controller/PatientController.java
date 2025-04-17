@@ -46,7 +46,7 @@ public class PatientController {
 
     @GetMapping
     public ResponseEntity<List<PatientDto>> get() {
-    	log.info("Receive request to get all Patient deatils");
+    	log.info("Receive request to get all Patient details");
         List<PatientDto> patientDTO = patientService.get();
         log.info("successfully retrieved Patients details: {}",patientDTO.size());
         return new ResponseEntity<>(patientDTO, HttpStatus.OK);

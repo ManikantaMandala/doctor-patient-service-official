@@ -34,8 +34,9 @@ The **Doctor Patient REST Service** is a Spring boot based application designed 
 http://localhost:8080/swagger-ui/index.html
 ```
 
-### Entity Relationship
+### UML Diagram
 
+// TODO: need to change the doctor and patient relationship
 ![schema_diagram](./schema.png)
 
 ### Authentication & Authorization(Based on JWT)
